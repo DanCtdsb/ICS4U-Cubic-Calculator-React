@@ -1,7 +1,4 @@
 import { useState, useEffect } from "react";
-import { CubicHistory } from "./components/CubicHistory";
-import { CubicEquation } from "./components/CubicEquation";
-import { CubicTable } from "./components/CubicTable";
 
 type setResultsType = {
   setResults: (results: {
@@ -13,13 +10,14 @@ type setResultsType = {
 };
 
 export const CubicInput = ({ setResults }: setResultsType) => {
-  const [a, setA] = useState<number>(0);
+
+  const [a, setA] = useState<number> | ;
   const [b, setB] = useState<number>(0);
   const [c, setC] = useState<number>(0);
   const [d, setD] = useState<number>(0);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const 
+   handleFormSubmit = (e: React.FormEvent) => { e.preventDefault();
 
     const p = (3 * a * c - b * b) / (3 * a * a);
     const q =
@@ -29,4 +27,37 @@ export const CubicInput = ({ setResults }: setResultsType) => {
 
     setResults({ p, q, shift, delta });
   };
+
+  return (
+    <div>
+      <label htmlFor="a">A:</label>
+      <input
+        type="number"
+        value={a}
+        onChange={(e) => setA(Number(e.target.value))}
+        required
+      />
+      <label htmlFor="b">B:</label>
+      <input
+        type="number"
+        value={b}
+        onChange={(e) => setB(Number(e.target.value))}
+        required
+      />
+      <label htmlFor="c">C:</label>
+      <input
+        type="number"
+        value={c}
+        onChange={(e) => setC(Number(e.target.value))}
+        required
+      />
+      <label htmlFor="d">D:</label>
+      <input
+        type="number"
+        value={d}
+        onChange={(e) => setD(Number(e.target.value))}
+        required
+      />
+    </div>
+  );
 };

@@ -11,20 +11,18 @@ export type CubicResults = {
   root3?: number | Complex;
 };
 
-export type coefficients = {
+export type CoefficientsType = {
   av: number;
   bv: number;
   cv: number;
   dv: number;
 };
 
-type setResultsType = {
+type CubicInputProps = {
   setResults: (results: CubicResults) => void;
+  setCoefficients: (results: CoefficientsType) => void;
 };
 
-type setCoefficientsType = {
-  setCoefficients: (results: coefficients) => void;
-};
 const cx = {
   add: (z1: Complex, z2: Complex): Complex => ({
     re: z1.re + z2.re,
@@ -64,7 +62,10 @@ const cx = {
 const omega: Complex = { re: -0.5, im: Math.sqrt(3) / 2 };
 const omega2: Complex = { re: -0.5, im: -Math.sqrt(3) / 2 };
 
-export const CubicInput = ({ setResults }: setResultsType, {setCoefficients}: setCoefficientsType) => {
+export const CubicInput = ({
+  setResults,
+  setCoefficients,
+}: CubicInputProps) => {
   const [a, setA] = useState<string>("");
   const [b, setB] = useState<string>("");
   const [c, setC] = useState<string>("");

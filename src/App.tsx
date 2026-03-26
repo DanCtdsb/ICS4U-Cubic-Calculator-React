@@ -16,9 +16,14 @@ export const App = () => {
     <div>
       <CubicInput setResults={setResults} setCoefficients={setCoefficients} />
       {coefficients && <CubicEquation coefficients={coefficients} />}
-      <CubicGraph />
-      { results && <CubicTable results={results} /> }
-      <CubicHistory />
+      {coefficients && <CubicGraph coefficients={coefficients} />}
+      {results && <CubicTable results={results} />}
+      {coefficients && (
+        <CubicHistory
+          setCoefficients={setCoefficients}
+          coefficients={coefficients}
+        />
+      )}
     </div>
   );
 };

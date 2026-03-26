@@ -102,7 +102,7 @@ export const CubicInput = ({
       const u = Math.cbrt(-q / 2 + sqrtDeltaReal);
       const v = Math.cbrt(-q / 2 - sqrtDeltaReal);
       const t1: Complex = { re: u + v, im: 0 };
-      root1 = cx.sub(t1, { re: shift, im: 0 });
+      root1 = (cx.sub(t1, { re: shift, im: 0 }).re);
     } else {
       const sqrtDelta: Complex = cx.sqrt({ re: delta, im: 0 });
       const u: Complex = cx.cbrt(cx.add({ re: -q / 2, im: 0 }, sqrtDelta));
@@ -110,9 +110,9 @@ export const CubicInput = ({
       const t1: Complex = cx.add(u, v);
       const t2: Complex = cx.add(cx.mul(omega, u), cx.mul(omega2, v));
       const t3: Complex = cx.add(cx.mul(omega2, u), cx.mul(omega, v));
-      root1 = cx.sub(t1, { re: shift, im: 0 });
-      root2 = cx.sub(t2, { re: shift, im: 0 });
-      root3 = cx.sub(t3, { re: shift, im: 0 });
+      root1 = (cx.sub(t1, { re: shift, im: 0 }).re);
+      root2 = (cx.sub(t2, { re: shift, im: 0 }).re);
+      root3 = (cx.sub(t3, { re: shift, im: 0 }).re);
     }
     setResults({ p, q, delta, root1, root2, root3 });
   }, [a, b, c, d]);

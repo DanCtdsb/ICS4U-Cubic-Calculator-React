@@ -6,52 +6,65 @@ type CubicTableProps = {
 
 export const CubicTable = ({ results }: CubicTableProps) => {
   return (
-    <table>
-      <tr>
-        <th>p</th>
-        <td>{results.p.toFixed(5)}</td>
-      </tr>
-      <tr>
-        <th>q</th>
-        <td>{results.q.toFixed(5)}</td>
-      </tr>
-      <tr>
-        <th>Discriminant</th>
-        <td>{results.delta.toFixed(5)}</td>
-      </tr>
-      <tr>
-        <th>Value</th>
-        <td>x</td>
-        <td>y</td>
-      </tr>
+    <table className="w-full border-collapse text-left">
+      <tbody className="divide-y divide-gray-300">
 
-      <tr>
-        <th>Root 1</th>
-        <td>
-          {typeof results.root1 === "number"
-            ? results.root1.toFixed(5)
-            : "Complex Root"}
-        </td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <th>Root 2</th>
-        <td>
-          {typeof results.root2 === "number"
-            ? results.root2.toFixed(5)
-            : "Complex Root"}
-        </td>
-        <td>{typeof results.root2 === "number" ? 0 : "Complex Root"}</td>
-      </tr>
-      <tr>
-        <th>Root 3</th>
-        <td>
-          {typeof results.root3 === "number"
-            ? results.root3.toFixed(5)
-            : "Complex Root"}
-        </td>
-        <td>{typeof results.root3 === "number" ? 0 : "Complex Root"}</td>
-      </tr>
+        <tr className="bg-gray-50">
+          <th className="p-2 font-semibold text-gray-700">p</th>
+          <td className="p-2">{results.p.toFixed(5)}</td>
+        </tr>
+
+        <tr>
+          <th className="p-2 font-semibold text-gray-700">q</th>
+          <td className="p-2">{results.q.toFixed(5)}</td>
+        </tr>
+
+        <tr className="bg-gray-50">
+          <th className="p-2 font-semibold text-gray-700">Discriminant</th>
+          <td className="p-2">{results.delta.toFixed(5)}</td>
+        </tr>
+
+        <tr>
+          <th className="p-2 font-semibold text-gray-700">Value</th>
+          <td className="p-2 font-medium">x</td>
+          <td className="p-2 font-medium">y</td>
+        </tr>
+
+        <tr className="bg-gray-50">
+          <th className="p-2 font-semibold text-gray-700">Root 1</th>
+          <td className="p-2">
+            {typeof results.root1 === "number"
+              ? results.root1.toFixed(5)
+              : "Complex Root"}
+          </td>
+          <td className="p-2">0</td>
+        </tr>
+
+        <tr>
+          <th className="p-2 font-semibold text-gray-700">Root 2</th>
+          <td className="p-2">
+            {typeof results.root2 === "number"
+              ? results.root2.toFixed(5)
+              : "Complex Root"}
+          </td>
+          <td className="p-2">
+            {typeof results.root2 === "number" ? 0 : "Complex Root"}
+          </td>
+        </tr>
+
+        <tr className="bg-gray-50">
+          <th className="p-2 font-semibold text-gray-700">Root 3</th>
+          <td className="p-2">
+            {typeof results.root3 === "number"
+              ? results.root3.toFixed(5)
+              : "Complex Root"}
+          </td>
+          <td className="p-2">
+            {typeof results.root3 === "number" ? 0 : "Complex Root"}
+          </td>
+        </tr>
+
+      </tbody>
     </table>
   );
 };

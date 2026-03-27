@@ -21,8 +21,10 @@ export const CubicEquation = ({ coefficients }: CubicEquationProps) => {
     t.push(`${dv > 0 ? "+" : "-"} ${Math.abs(dv)}`);
 
   return (
-    <div>
-      <h1>{t.join(" ")}</h1>
+    <div className="text-center">
+      <h1 className="text-2xl font-semibold text-gray-800">
+        {t.join(" ")}
+      </h1>
     </div>
   );
 };

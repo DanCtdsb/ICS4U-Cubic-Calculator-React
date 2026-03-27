@@ -1,38 +1,26 @@
 import type { CoefficientsType } from "./CubicInput";
 import type { CubicResults } from "./CubicInput";
-import { useState } from "react";
 
 type SetCoefficientsType = {
   setCoefficients: (results: CoefficientsType) => void;
-  coefficients: CoefficientsType;
   setResults: (results: CubicResults) => void;
-  results: CubicResults;
+  history: CoefficientsType[];
+  resultsHistory: CubicResults[];
 };
 
 export const CubicHistory = ({
   setCoefficients,
-  coefficients,
   setResults,
-  results,
+  history,
+  resultsHistory
 }: SetCoefficientsType) => {
-  const [history, setHistory] = useState<CoefficientsType[]>([]);
-  const [resultsHistory, setResultsHistory] = useState<CubicResults[]>([]);
-
-  const { av, bv, cv, dv } = coefficients;
 
   return (
-    <div>
-      <button
-        onClick={() => {
-          setHistory([...history, { av, bv, cv, dv }]);
-          setResultsHistory([...resultsHistory, results]);
-        }}
-      >
-        Save
-      </button>
-      <div>
-        <h2>History</h2>
-        <ul>
+    <div className="w-full">
+      <div className="p-4">
+        <h2 className="text-xl font-semibold text-gray-800 mb-3">History</h2>
+
+        <ul className="space-y-2">
           {history.map((entry, index) => (
             <li
               key={index}
@@ -40,6 +28,7 @@ export const CubicHistory = ({
                 setCoefficients(entry);
                 setResults(resultsHistory[index]);
               }}
+              className="cursor-pointer p-2 bg-gray-100 hover:bg-gray-200 rounded transition"
             >
               {entry.av}, {entry.bv}, {entry.cv}, {entry.dv}
             </li>

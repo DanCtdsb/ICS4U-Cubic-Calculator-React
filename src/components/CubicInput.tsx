@@ -21,6 +21,7 @@ export type CoefficientsType = {
 type CubicInputProps = {
   setResults: (results: CubicResults) => void;
   setCoefficients: (results: CoefficientsType) => void;
+  onSave: () => void;
 };
 
 const cx = {
@@ -65,6 +66,7 @@ const omega2: Complex = { re: -0.5, im: -Math.sqrt(3) / 2 };
 export const CubicInput = ({
   setResults,
   setCoefficients,
+  onSave,
 }: CubicInputProps) => {
   const [a, setA] = useState<string>("");
   const [b, setB] = useState<string>("");
@@ -85,14 +87,14 @@ export const CubicInput = ({
     const q =
       (27 * av * av * dv - 9 * av * bv * cv + 2 * bv * bv * bv) /
       (27 * av * av * av);
-    const shift = bv / (3 * av); // Depressed cubic substitution: x = t - b/(3a)
+    const shift = bv / (3 * av);
     const delta = (q * q) / 4 + (p * p * p) / 27;
 
     let root1: number | Complex;
     let root2: number | Complex | undefined;
     let root3: number | Complex | undefined;
 
-    if (Math.abs(delta) < 1e-12) {
+    if (Math.abs(delta) < 1e-6) {
       const u = Math.cbrt(-q / 2);
       root1 = 2 * u - shift;
       root2 = -u - shift;
@@ -102,7 +104,7 @@ export const CubicInput = ({
       const u = Math.cbrt(-q / 2 + sqrtDeltaReal);
       const v = Math.cbrt(-q / 2 - sqrtDeltaReal);
       const t1: Complex = { re: u + v, im: 0 };
-      root1 = (cx.sub(t1, { re: shift, im: 0 }).re);
+      root1 = cx.sub(t1, { re: shift, im: 0 }).re;
     } else {
       const sqrtDelta: Complex = cx.sqrt({ re: delta, im: 0 });
       const u: Complex = cx.cbrt(cx.add({ re: -q / 2, im: 0 }, sqrtDelta));
@@ -110,43 +112,58 @@ export const CubicInput = ({
       const t1: Complex = cx.add(u, v);
       const t2: Complex = cx.add(cx.mul(omega, u), cx.mul(omega2, v));
       const t3: Complex = cx.add(cx.mul(omega2, u), cx.mul(omega, v));
-      root1 = (cx.sub(t1, { re: shift, im: 0 }).re);
-      root2 = (cx.sub(t2, { re: shift, im: 0 }).re);
-      root3 = (cx.sub(t3, { re: shift, im: 0 }).re);
+      root1 = cx.sub(t1, { re: shift, im: 0 }).re;
+      root2 = cx.sub(t2, { re: shift, im: 0 }).re;
+      root3 = cx.sub(t3, { re: shift, im: 0 }).re;
     }
     setResults({ p, q, delta, root1, root2, root3 });
   }, [a, b, c, d]);
 
   return (
-    <div>
-      <label htmlFor="a">A:</label>
+    <div className="flex flex-col gap-4">
+
+      <label className="font-medium text-gray-700">A:</label>
       <input
         type="number"
         value={a}
         onChange={(e) => setA(e.target.value)}
         required
+        className="border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
       />
-      <label htmlFor="b">B:</label>
+
+      <label className="font-medium text-gray-700">B:</label>
       <input
         type="number"
         value={b}
         onChange={(e) => setB(e.target.value)}
         required
+        className="border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
       />
-      <label htmlFor="c">C:</label>
+
+      <label className="font-medium text-gray-700">C:</label>
       <input
         type="number"
         value={c}
         onChange={(e) => setC(e.target.value)}
         required
+        className="border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
       />
-      <label htmlFor="d">D:</label>
+
+      <label className="font-medium text-gray-700">D:</label>
       <input
         type="number"
         value={d}
         onChange={(e) => setD(e.target.value)}
         required
+        className="border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
       />
+
+      <button
+        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+        onClick={onSave}
+      >
+        Save
+      </button>
     </div>
   );
 };

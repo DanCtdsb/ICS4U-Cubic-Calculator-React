@@ -92,7 +92,7 @@ export const CubicInput = ({
     let root2: number | Complex | undefined;
     let root3: number | Complex | undefined;
 
-    if (Math.abs(delta) < 1e-12) {
+    if (Math.abs(delta) < 1e-6) {
       const u = Math.cbrt(-q / 2);
       root1 = 2 * u - shift;
       root2 = -u - shift;

@@ -3,7 +3,7 @@ import { CubicGraph } from "./components/CubicGraph";
 import { CubicHistory } from "./components/CubicHistory";
 import { CubicInput } from "./components/CubicInput";
 import { CubicTable } from "./components/CubicTable";
-import type { CoefficientsType, CubicResults } from "./components/CubicInput";
+import type { CoefficientsType, CubicResults } from "./types";
 import { useState } from "react";
 
 export const App = () => {

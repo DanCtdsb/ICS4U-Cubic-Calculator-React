@@ -1,4 +1,4 @@
-import type { CubicResults } from "./CubicInput";
+import type { CubicResults } from "../types";
 
 type CubicTableProps = {
   results: CubicResults;

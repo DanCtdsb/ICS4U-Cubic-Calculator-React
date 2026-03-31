@@ -1,4 +1,4 @@
-import type { CoefficientsType } from "./CubicInput";
+import type { CoefficientsType } from "../types";
 
 type CubicEquationProps = {
   coefficients: CoefficientsType;

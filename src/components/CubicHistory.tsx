@@ -1,5 +1,5 @@
-import type { CoefficientsType } from "./CubicInput";
-import type { CubicResults } from "./CubicInput";
+import type { CoefficientsType } from "../types";
+import type { CubicResults } from "../types";
 
 type SetCoefficientsType = {
   setCoefficients: (results: CoefficientsType) => void;

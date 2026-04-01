@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import type { Complex, CubicResults, CoefficientsType } from "../types";
 
-
 type CubicInputProps = {
   setResults: (results: CubicResults) => void;
   setCoefficients: (results: CoefficientsType) => void;
@@ -105,7 +104,6 @@ export const CubicInput = ({
 
   return (
     <div className="flex flex-col gap-4">
-
       <label className="font-medium text-gray-700">A:</label>
       <input
         type="number"

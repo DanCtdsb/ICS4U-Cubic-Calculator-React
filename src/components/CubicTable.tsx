@@ -8,7 +8,6 @@ export const CubicTable = ({ results }: CubicTableProps) => {
   return (
     <table className="w-full border-collapse text-left">
       <tbody className="divide-y divide-gray-300">
-
         <tr className="bg-gray-50">
           <th className="p-2 font-semibold text-gray-700">p</th>
           <td className="p-2">{results.p.toFixed(5)}</td>
@@ -63,7 +62,6 @@ export const CubicTable = ({ results }: CubicTableProps) => {
             {typeof results.root3 === "number" ? 0 : "Complex Root"}
           </td>
         </tr>
-
       </tbody>
     </table>
   );

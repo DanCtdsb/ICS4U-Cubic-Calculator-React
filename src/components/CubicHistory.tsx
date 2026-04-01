@@ -12,9 +12,8 @@ export const CubicHistory = ({
   setCoefficients,
   setResults,
   history,
-  resultsHistory
+  resultsHistory,
 }: SetCoefficientsType) => {
-
   return (
     <div className="w-full">
       <div className="p-4">

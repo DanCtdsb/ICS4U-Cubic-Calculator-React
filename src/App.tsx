@@ -14,7 +14,10 @@ export const App = () => {
   const [resultsHistory, setResultsHistory] = useState<CubicResults[]>([]);
 
   const handleSave = () => {
-    if (!coefficients || !results) return;
+    if (!coefficients || !results) {
+      return;
+    }
+    
     setHistory([...history, coefficients]);
     setResultsHistory([...resultsHistory, results]);
   };

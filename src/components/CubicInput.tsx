@@ -62,6 +62,9 @@ export const CubicInput = ({
     }
 
     const av = Number(a);
+    if (av === 0) {
+      return;
+    }
     const bv = Number(b);
     const cv = Number(c);
     const dv = Number(d);

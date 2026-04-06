@@ -1,7 +1,7 @@
 import type { CoefficientsType } from "../types";
 import type { CubicResults } from "../types";
 
-type SetCoefficientsType = {
+type CubicHistoryProps = {
   setCoefficients: (results: CoefficientsType) => void;
   setResults: (results: CubicResults) => void;
   history: CoefficientsType[];
@@ -12,8 +12,9 @@ export const CubicHistory = ({
   setCoefficients,
   setResults,
   history,
-  resultsHistory,
-}: SetCoefficientsType) => {
+  resultsHistory
+}: CubicHistoryProps) => {
+
   return (
     <div className="w-full">
       <div className="p-4">

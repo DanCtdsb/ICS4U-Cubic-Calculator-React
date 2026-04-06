@@ -10,10 +10,17 @@ export const CubicGraph = ({ coefficients }: CoefficientsTypeProp) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
-    const width = Number(canvasRef.current?.width);
-    const height = Number(canvasRef.current?.height);
-    const ctx = canvasRef.current?.getContext("2d");
-    if (!ctx) return;
+    const canvas = canvasRef.current;
+    if (!canvas) {
+      return;
+    }
+
+    const width = Number(canvas.width);
+    const height = Number(canvas.height);
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+      return;
+    }
 
     ctx.clearRect(0, 0, width, height);
     ctx.fillStyle = "#fff";
@@ -43,6 +50,7 @@ export const CubicGraph = ({ coefficients }: CoefficientsTypeProp) => {
     ctx.beginPath();
     ctx.lineWidth = 0.3;
     ctx.strokeStyle = "#000";
+
     for (let i = 10; i <= width; i += 20) {
       ctx.moveTo(i, 0);
       ctx.lineTo(i, height);

@@ -13,10 +13,12 @@ export const CubicEquation = ({ coefficients }: CubicEquationProps) => {
     t.push(
       `${bv > 0 ? "+" : "-"} ${Math.abs(bv) === 1 ? "x²" : Math.abs(bv) + "x²"}`,
     );
+
   if (cv !== 0)
     t.push(
       `${cv > 0 ? "+" : "-"} ${Math.abs(cv) === 1 ? "x" : Math.abs(cv) + "x"}`,
     );
+    
   if (dv !== 0)
     t.push(`${dv > 0 ? "+" : "-"} ${Math.abs(dv)}`);
 
